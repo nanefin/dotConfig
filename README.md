@@ -1,3 +1,16 @@
+# location
+## windows
+```
+C:\Users\{user}\AppData\Roaming\gitui
+C:\Users\{user}\AppData\Local\nvim
+```
+
+## mac
+```
+/Users/{user}/.config/gitui
+/Users/{user}/.config/nvim
+```
+
 # packages
 neovide
 neovim
