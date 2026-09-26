@@ -61,6 +61,10 @@ vim.keymap.set("n", "<leader>gg", "<cmd>tab ter cd %:p:h && gitui<CR>", {
 	desc = "Open gitui in new tab at current file's directory",
 })
 
+-- インサートモードでのVim標準補完（Ctrl+n / Ctrl+p）を完全に無効化する
+vim.keymap.set('i', '<C-n>', '<Nop>', { noremap = true, silent = true })
+vim.keymap.set('i', '<C-p>', '<Nop>', { noremap = true, silent = true })
+
 -- スペルチェックの切り替え
 vim.keymap.set("n", "<leader>sc", function()
 	vim.wo.spell = not vim.wo.spell
@@ -109,3 +113,4 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("plugins")
+

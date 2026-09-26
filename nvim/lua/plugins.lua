@@ -109,12 +109,21 @@ return {
 		},
 		opts = {
 			formatters_by_ft = {
+				flat = { "flat_formatter" },
 				lua = { "stylua" },
 				markdown = { "prettier" },
 				javascript = { "prettier" },
 				typescript = { "prettier" },
 				javascriptreact = { "prettier" },
 				typescriptreact = { "prettier" },
+			},
+			formatters = {
+				flat_formatter = {
+					format = function(self, ctx, lines, callback)
+						local formatted = require("flat.formatter").format_lines(lines)
+						callback(nil, formatted)
+					end,
+				},
 			},
 		},
 	},
@@ -145,28 +154,33 @@ return {
 		event = "InsertEnter",
 		dependencies = {
 			"hrsh7th/cmp-nvim-lsp",
-			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
+			"hrsh7th/cmp-omni",
 		},
 		config = function()
 			local cmp = require("cmp")
 
 			cmp.setup({
+				completion = { completeopt = "menu,menuone,noselect" },
 				window = {
 					completion = cmp.config.window.bordered(),
 					documentation = cmp.config.window.bordered(),
 				},
 				mapping = cmp.mapping.preset.insert({
-					["<C-n>"] = cmp.mapping.select_next_item(), -- 次の候補
-					["<C-p>"] = cmp.mapping.select_prev_item(), -- 前の候補
-					["<CR>"] = cmp.mapping.confirm({ select = true }), -- 確定
-					["<C-e>"] = cmp.mapping.abort(), -- 補完ウィンドウを閉じる
+					["<C-n>"] = cmp.mapping.select_next_item(),
+					["<C-p>"] = cmp.mapping.select_prev_item(),
+					["<CR>"] = cmp.mapping.confirm({ select = true }),
+					["<C-e>"] = cmp.mapping.abort(),
+					["<C-Space>"] = cmp.mapping.complete(),
 				}),
-				sources = {
+				sources = cmp.config.sources({
+					{
+						name = "omni",
+						keyword_pattern = [[\%([#$!]\w*\|[\w_]\+\)]],
+					},
 					{ name = "nvim_lsp" },
-					{ name = "buffer" },
 					{ name = "path" },
-				},
+				}),
 			})
 		end,
 	},
@@ -217,5 +231,13 @@ return {
 		init = function()
 			vim.g.loaded_netrwPlugin = 1
 		end,
+	},
+
+	{
+
+		-- "nanefin/flat.nvim",
+		dir = "~/.config/nvim/flat.nvim",
+		lazy = false,
+		opts = {},
 	},
 }
