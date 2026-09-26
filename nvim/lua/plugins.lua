@@ -117,14 +117,6 @@ return {
 				javascriptreact = { "prettier" },
 				typescriptreact = { "prettier" },
 			},
-			formatters = {
-				flat_formatter = {
-					format = function(self, ctx, lines, callback)
-						local formatted = require("flat.formatter").format_lines(lines)
-						callback(nil, formatted)
-					end,
-				},
-			},
 		},
 	},
 
@@ -234,7 +226,6 @@ return {
 	},
 
 	{
-
 		-- "nanefin/flat.nvim",
 		dir = "~/.config/nvim/flat.nvim",
 		lazy = false,
