@@ -13,6 +13,9 @@ vim.opt.number = true -- 行番号を表示
 vim.opt.termguicolors = true -- 24ビットRGBカラーを有効化
 vim.opt.clipboard = "unnamedplus" -- OSのクリップボードと共有
 
+-- サインカラムを常に表示し、幅を固定する
+vim.opt.signcolumn = "yes"
+
 -- --- 検索設定 ---
 vim.opt.ignorecase = true -- 検索で大文字小文字を区別しない
 vim.opt.smartcase = true -- 検索語に大文字が含まれる場合のみ区別する
@@ -62,8 +65,8 @@ vim.keymap.set("n", "<leader>gg", "<cmd>tab ter cd %:p:h && gitui<CR>", {
 })
 
 -- インサートモードでのVim標準補完（Ctrl+n / Ctrl+p）を完全に無効化する
-vim.keymap.set('i', '<C-n>', '<Nop>', { noremap = true, silent = true })
-vim.keymap.set('i', '<C-p>', '<Nop>', { noremap = true, silent = true })
+vim.keymap.set("i", "<C-n>", "<Nop>", { noremap = true, silent = true })
+vim.keymap.set("i", "<C-p>", "<Nop>", { noremap = true, silent = true })
 
 -- スペルチェックの切り替え
 vim.keymap.set("n", "<leader>sc", function()
@@ -113,4 +116,3 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("plugins")
-
