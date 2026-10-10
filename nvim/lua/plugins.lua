@@ -109,7 +109,6 @@ return {
 		},
 		opts = {
 			formatters_by_ft = {
-				flat = { "flat_formatter" },
 				lua = { "stylua" },
 				markdown = { "prettier" },
 				javascript = { "prettier" },
@@ -226,8 +225,9 @@ return {
 	},
 
 	{
-		-- "nanefin/flat.nvim",
-		dir = "~/.config/nvim/flat.nvim",
+		"nanefin/flat.nvim",
+		-- dir = "~/.config/nvim/flat.nvim",
+		-- dir = "C:/flat.nvim",
 		lazy = false,
 		opts = {},
 	},
