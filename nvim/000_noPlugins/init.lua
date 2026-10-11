@@ -12,6 +12,9 @@ vim.opt.number = true
 vim.opt.termguicolors = true
 vim.opt.clipboard = "unnamedplus"
 
+-- サインカラムを常に表示し、幅を固定する
+vim.opt.signcolumn = "yes"
+
 -- 検索設定
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
@@ -71,7 +74,7 @@ vim.keymap.set("n", "<leader>sc", function()
 	end
 end, { desc = "Toggle spell check" })
 
--- 行末のスペース削除 (<leader>tw)
+-- 行末のスペース削除 (<leader>ts)
 local function trim_whitespace()
 	local save_cursor = vim.fn.getpos(".")
 	vim.cmd([[%s/\s\+$//e]])
@@ -80,7 +83,7 @@ local function trim_whitespace()
 end
 
 vim.api.nvim_create_user_command("TrimWhitespace", trim_whitespace, {})
-vim.keymap.set("n", "<leader>tw", trim_whitespace, { desc = "Trim trailing spaces" })
+vim.keymap.set("n", "<leader>ts", trim_whitespace, { desc = "Trim trailing spaces" })
 
 -- --- 自動コマンド---
 -- Markdownファイル用のHTMLコメントハイライト設定

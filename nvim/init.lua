@@ -89,7 +89,7 @@ local function trim_whitespace()
 end
 
 vim.api.nvim_create_user_command("TrimWhitespace", trim_whitespace, {})
-vim.keymap.set("n", "<leader>tw", trim_whitespace, { desc = "Trim trailing spaces" })
+vim.keymap.set("n", "<leader>ts", trim_whitespace, { desc = "Trim trailing spaces" })
 
 -- --- 自動コマンド---
 -- Markdownファイル用のHTMLコメントハイライト設定
