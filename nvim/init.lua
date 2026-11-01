@@ -92,6 +92,14 @@ vim.api.nvim_create_user_command("TrimWhitespace", trim_whitespace, {})
 vim.keymap.set("n", "<leader>ts", trim_whitespace, { desc = "Trim trailing spaces" })
 
 -- --- 自動コマンド---
+-- 改行等のコメント継続を無効化する
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "*",
+	callback = function()
+		vim.opt_local.formatoptions:remove({ "c", "r", "o" })
+	end,
+})
+
 -- Markdownファイル用のHTMLコメントハイライト設定
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "markdown",
