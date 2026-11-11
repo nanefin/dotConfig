@@ -83,6 +83,9 @@ return {
 					vim.keymap.set("n", "gr", vim.lsp.buf.references, opts) -- 参照一覧
 					vim.keymap.set("n", "K", vim.lsp.buf.hover, opts) -- ホバー
 					vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts) -- リネーム
+					vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, opts) -- カーソル位置のエラー詳細をポップアップで表示
+					vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts) -- 前のエラーへジャンプ
+					vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts) -- 次のエラーへジャンプ
 				end,
 			})
 		end,
